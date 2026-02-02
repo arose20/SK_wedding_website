@@ -1,0 +1,363 @@
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,600&family=Poppins:wght@300;400;500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap");
+
+/* Full-page pastel background */
+body, html, main {
+  margin: 0;
+  padding: 0;
+  width: 100vw;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+  overflow-x: hidden;
+  background: #fdf6f0; /* pastel watercolor tone */
+}
+
+.navbar {
+  width: 100vw; /* full width */
+  display: flex;
+  align-items: center; /* vertically center logo + links */
+  justify-content: space-between; /* logo left, links right */
+  padding: 20px 5vw; /* space from edges */
+  background: rgba(255,255,255,0.95);
+  backdrop-filter: blur(8px);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-sizing: border-box;
+}
+
+.navbar .logo {
+  font-family: "Great Vibes", cursive;
+  font-size: 1.8rem;
+  color: #6ca0dc;
+}
+
+.nav-links {
+  display: flex;
+  gap: 25px; /* spacing between links */
+}
+
+.nav-links li {
+  list-style: none;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: #555;
+  font-weight: 500;
+  white-space: nowrap; /* prevent links from breaking */
+}
+
+.nav-links a:hover {
+  color: #6ca0dc;
+}
+
+/* Mobile fallback: stack links under logo if screen too narrow */
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .nav-links {
+    margin-top: 10px;
+    gap: 15px;
+    width: 100%;
+    justify-content: flex-start;
+  }
+}
+
+
+
+
+
+
+/* Sections */
+.section {
+  width: 100vw;
+  padding: 8rem 5vw;
+  box-sizing: border-box;
+  text-align: center;
+  color: #333;
+}
+.section-title {
+  font-family: "Great Vibes", cursive;
+  font-size: clamp(2.2rem, 4vw, 2.8rem);
+  color: #b76e79;
+  margin-bottom: 3rem;
+}
+
+/* Hero */
+.hero {
+  text-align: center;
+  padding: 10rem 2rem 6rem;
+  background-color: #fdf6f0; /* optional pastel background to match wedding theme */
+}
+
+.couple-name {
+  font-family: "Great Vibes", cursive;
+  font-size: clamp(6.5rem, 6vw, 5rem); /* responsive large heading */
+  color: #6ca0dc;
+  margin-bottom: 2rem;
+}
+
+.subtitle {
+  font-family: "Poppins", sans-serif;
+  font-size: clamp(1.5rem, 1.2vw, 1.5rem); /* responsive size */
+  max-width: 800px;   /* limits line length for readability */
+  margin: 0 auto;     /* centers subtitle */
+  line-height: 1.6;   /* improves spacing */
+  letter-spacing: 0.5px;
+  color: #555;        /* soft, elegant gray */
+  padding: 0 1rem;    /* some horizontal padding on small screens */
+}
+
+
+
+
+
+
+
+/* People Cards */
+.people-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; justify-items: center; }
+.person-card { background: rgba(255,255,255,0.85); padding: 50px; border-radius: 30px; box-shadow: 0 20px 45px rgba(0,0,0,0.08); text-align: center; transition: 0.3s; }
+.person-card:hover { transform: translateY(-5px); box-shadow: 0 30px 60px rgba(0,0,0,0.15); }
+.person-image { width: 160px; height: 160px; border-radius: 50%; overflow: hidden; border: 3px solid #d4e2f2; margin: 0 auto 20px; }
+.person-image img { width: 100%; height: 100%; object-fit: cover; }
+
+
+.directions-text {
+  font-size: 1.3rem; /* increase from default */
+  font-weight: 500;  /* optional: make text slightly bolder */
+  text-align: center; /* optional: center-align text */
+  color: #333;       /* adjust color to match your theme */
+  margin-bottom: 1rem; /* spacing below the text */
+}
+
+
+/* Schedule */
+.schedule-list {
+  list-style: disc;
+  padding-left: 0;
+  max-width: 500px;
+  margin: 0 auto;
+  text-align: left;
+  color: #555;
+  font-size: 1.1rem;
+  line-height: 2;
+}
+
+/* Map */
+.map-container {
+  width: 100%;       /* full width */
+  max-width: 100%;   /* don't constrain */
+  height: 500px;     /* increase vertical height */
+  margin: 0 auto;
+  border-radius: 20px;
+  overflow: hidden;  /* rounded corners */
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.map-container .leaflet-container {
+  width: 100% !important;  /* fill parent */
+  height: 100% !important; /* fill parent */
+}
+
+
+/* RSVP Form */
+.rsvp-form {
+  max-width: 700px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 3rem;
+  border-radius: 24px;
+  background: rgba(255,255,255,0.95);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+}
+
+.rsvp-card {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 24px;
+  border-radius: 20px;
+  background: #fff;
+}
+
+.input-group {
+  display: flex;
+  gap: 12px;
+}
+
+input,
+textarea {
+  padding: 12px 16px;
+  border-radius: 14px;
+  border: 1px solid #d8bfc4;
+  font-size: 1rem;
+  width: 100%;
+  background: #fff;
+}
+
+
+/* 🌸 Perfect-circle solid radios */
+.option {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+  font-size: 1rem;
+  color: #5a3b42;
+}
+
+.option input[type="radio"] {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+
+  /* hard reset */
+  all: unset;
+
+  /* force perfect square */
+  width: 20px;
+  aspect-ratio: 1 / 1;
+
+  border-radius: 50%;
+  border: 2px solid #b76e79;
+  background-color: #fff;
+
+  display: inline-block;
+  flex-shrink: 0;
+
+  cursor: pointer;
+}
+
+/* checked = filled circle */
+.option input[type="radio"]:checked {
+  background-color: #b76e79;
+  border-color: #b76e79;
+}
+
+
+.guest-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.remove-guest {
+  background: none;
+  border: none;
+  color: #b76e79;
+  font-size: 0.9rem;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.remove-guest:hover {
+  opacity: 0.7;
+}
+
+
+
+/* Guest card */
+.guest-card {
+  border: 2px dashed #e2b7c1;
+  background: #fff7f9;
+}
+
+/* Buttons */
+.add-guest {
+  background: none;
+  border: 2px dashed #b76e79;
+  padding: 10px 18px;
+  border-radius: 14px;
+  color: #b76e79;
+  cursor: pointer;
+  margin: 0 auto;
+}
+
+.add-guest:hover {
+  background: #b76e79;
+  color: #fff;
+}
+
+.rsvp-submit {
+  padding: 16px;
+  border-radius: 30px;
+  border: none;
+  background: linear-gradient(135deg, #f5a99b, #b76e79);
+  color: #fff;
+  font-size: 1.1rem;
+  cursor: pointer;
+}
+
+.rsvp-submit:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 30px rgba(183,110,121,0.3);
+}
+
+.thank-you {
+  font-size: 1.2rem;
+  text-align: center;
+  color: #6b4a52;
+}
+
+
+.collapsible {
+  overflow: hidden;
+  animation: collapseIn 0.35s ease;
+}
+
+@keyframes collapseIn {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+.dietary-input {
+  max-width: 420px;
+  margin: 0 auto;
+}
+
+.success-screen {
+  text-align: center;
+  padding: 3rem;
+}
+
+
+.confetti::before,
+.confetti::after {
+  content: "🎉 🎊 💖 ✨";
+  position: absolute;
+  font-size: 2rem;
+  animation: fall 2s infinite linear;
+}
+
+.confetti::after {
+  left: 50%;
+  animation-delay: 0.5s;
+}
+
+@keyframes fall {
+  from {
+    top: -20px;
+    opacity: 1;
+  }
+  to {
+    top: 100%;
+    opacity: 0;
+  }
+}
+
+fieldset.disabled {
+  opacity: 0.5;
+  pointer-events: none;
+}
