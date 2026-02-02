@@ -3,8 +3,10 @@ import "./Home.css";
 import MapDisplay from "./MapDisplay";
 
 const people = [
+  { name: "Sophie Limon", role: "Bride", img: "https://via.placeholder.com/150" },
+  { name: "Kieran Ryan", role: "Groom", img: "https://via.placeholder.com/150" },
   { name: "Zoe Limon", role: "Maid of Honor", img: "https://via.placeholder.com/150" },
-  { name: "Liam James", role: "Best Man", img: "https://via.placeholder.com/150" },
+  { name: "Cameron James", role: "Best Man", img: "https://via.placeholder.com/150" },
 ];
 
 export default function Home() {
@@ -350,9 +352,16 @@ export default function Home() {
               </>
             )}
 
-            <button type="submit" className="rsvp-submit" disabled={!isFormValid()}>
+            <button
+              type="submit"
+              className="rsvp-submit"
+              disabled={
+                !form.rsvp || (form.rsvp === "yes" && !isFormValid())
+              }
+            >
               Submit RSVP
             </button>
+
           </form>
         )}
       </section>

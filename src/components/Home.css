@@ -360,7 +360,7 @@ textarea::placeholder {
 }
 
 .confetti::before,
-.confetti::after {
+/*.confetti::after {
   content: "🎉 🎊 💖 ✨";
   position: absolute;
   font-size: 2rem;
@@ -375,7 +375,7 @@ textarea::placeholder {
 @keyframes fall {
   from { top: -20px; opacity: 1; }
   to { top: 100%; opacity: 0; }
-}
+}*/
 
 /* =========================
    UTIL
