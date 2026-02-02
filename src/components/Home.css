@@ -1,29 +1,37 @@
 @import url("https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,600&family=Poppins:wght@300;400;500&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap");
 
-/* Full-page pastel background */
+/* =========================
+   GLOBAL
+========================= */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
 body, html, main {
   margin: 0;
   padding: 0;
-  width: 100vw;
-  box-sizing: border-box;
+  width: 100%;
   font-family: "Poppins", sans-serif;
   overflow-x: hidden;
-  background: #fdf6f0; /* pastel watercolor tone */
+  background: #fdf6f0;
+  color: #5a3b42;
 }
 
+/* =========================
+   NAVBAR
+========================= */
 .navbar {
-  width: 100vw; /* full width */
+  width: 100%;
   display: flex;
-  align-items: center; /* vertically center logo + links */
-  justify-content: space-between; /* logo left, links right */
-  padding: 20px 5vw; /* space from edges */
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 5vw;
   background: rgba(255,255,255,0.95);
   backdrop-filter: blur(8px);
   position: sticky;
   top: 0;
   z-index: 100;
-  box-sizing: border-box;
 }
 
 .navbar .logo {
@@ -34,7 +42,9 @@ body, html, main {
 
 .nav-links {
   display: flex;
-  gap: 25px; /* spacing between links */
+  gap: 25px;
+  padding: 0;
+  margin: 0;
 }
 
 .nav-links li {
@@ -45,149 +55,190 @@ body, html, main {
   text-decoration: none;
   color: #555;
   font-weight: 500;
-  white-space: nowrap; /* prevent links from breaking */
+  white-space: nowrap;
 }
 
 .nav-links a:hover {
   color: #6ca0dc;
 }
 
-/* Mobile fallback: stack links under logo if screen too narrow */
+/* ✅ TRUE mobile centering */
 @media (max-width: 768px) {
   .navbar {
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
+    justify-content: center;
+    padding: 16px 1rem;
   }
+
+  .navbar .logo {
+    margin-bottom: 12px;
+    text-align: center;
+  }
+
   .nav-links {
-    margin-top: 10px;
-    gap: 15px;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
     width: 100%;
-    justify-content: flex-start;
+    gap: 14px;
+    flex-wrap: wrap;
   }
 }
 
-
-
-
-
-
-/* Sections */
+/* =========================
+   SECTIONS
+========================= */
 .section {
-  width: 100vw;
-  padding: 8rem 5vw;
-  box-sizing: border-box;
+  width: 100%;
+  padding: 6rem 5vw;
   text-align: center;
-  color: #333;
 }
+
+@media (max-width: 768px) {
+  .section {
+    padding: 4rem 1.25rem;
+  }
+}
+
 .section-title {
   font-family: "Great Vibes", cursive;
-  font-size: clamp(2.2rem, 4vw, 2.8rem);
+  font-size: clamp(2.2rem, 5vw, 2.8rem);
   color: #b76e79;
-  margin-bottom: 3rem;
+  margin-bottom: 2.5rem;
 }
 
-/* Hero */
+/* =========================
+   HERO
+========================= */
 .hero {
-  text-align: center;
-  padding: 10rem 2rem 6rem;
-  background-color: #fdf6f0; /* optional pastel background to match wedding theme */
+  padding: 8rem 1.5rem 5rem;
 }
 
 .couple-name {
   font-family: "Great Vibes", cursive;
-  font-size: clamp(6.5rem, 6vw, 5rem); /* responsive large heading */
+  font-size: clamp(3.8rem, 10vw, 6.5rem);
   color: #6ca0dc;
-  margin-bottom: 2rem;
+  margin-bottom: 1.5rem;
 }
 
 .subtitle {
-  font-family: "Poppins", sans-serif;
-  font-size: clamp(1.5rem, 1.2vw, 1.5rem); /* responsive size */
-  max-width: 800px;   /* limits line length for readability */
-  margin: 0 auto;     /* centers subtitle */
-  line-height: 1.6;   /* improves spacing */
-  letter-spacing: 0.5px;
-  color: #555;        /* soft, elegant gray */
-  padding: 0 1rem;    /* some horizontal padding on small screens */
+  font-size: clamp(1rem, 4vw, 1.5rem);
+  max-width: 800px;
+  margin: 0 auto;
+  line-height: 1.6;
+  color: #555;
 }
 
-
-
-
-
-
-
-/* People Cards */
-.people-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; justify-items: center; }
-.person-card { background: rgba(255,255,255,0.85); padding: 50px; border-radius: 30px; box-shadow: 0 20px 45px rgba(0,0,0,0.08); text-align: center; transition: 0.3s; }
-.person-card:hover { transform: translateY(-5px); box-shadow: 0 30px 60px rgba(0,0,0,0.15); }
-.person-image { width: 160px; height: 160px; border-radius: 50%; overflow: hidden; border: 3px solid #d4e2f2; margin: 0 auto 20px; }
-.person-image img { width: 100%; height: 100%; object-fit: cover; }
-
-
-.directions-text {
-  font-size: 1.3rem; /* increase from default */
-  font-weight: 500;  /* optional: make text slightly bolder */
-  text-align: center; /* optional: center-align text */
-  color: #333;       /* adjust color to match your theme */
-  margin-bottom: 1rem; /* spacing below the text */
+/* =========================
+   PEOPLE
+========================= */
+.people-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 32px;
+  justify-items: center;
 }
 
+.person-card {
+  background: rgba(255,255,255,0.85);
+  padding: 40px;
+  border-radius: 28px;
+  box-shadow: 0 20px 45px rgba(0,0,0,0.08);
+  transition: 0.3s;
+}
 
-/* Schedule */
+.person-card img {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 1rem;
+}
+
+/* =========================
+   SCHEDULE
+========================= */
 .schedule-list {
-  list-style: disc;
-  padding-left: 0;
-  max-width: 500px;
+  max-width: 420px;
   margin: 0 auto;
   text-align: left;
-  color: #555;
-  font-size: 1.1rem;
+  font-size: 1.05rem;
   line-height: 2;
+  color: #555;
 }
 
-/* Map */
+/* =========================
+   DIRECTIONS / MAP
+========================= */
+.directions-text {
+  font-size: 1.15rem;
+  font-weight: 500;
+  margin-bottom: 1rem;
+}
+
+/* ✅ Map FIXED — Leaflet-safe */
 .map-container {
-  width: 100%;       /* full width */
-  max-width: 100%;   /* don't constrain */
-  height: 500px;     /* increase vertical height */
+  width: 100%;
+  max-width: 100%;
+  height: 420px;
   margin: 0 auto;
   border-radius: 20px;
-  overflow: hidden;  /* rounded corners */
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
 }
 
 .map-container .leaflet-container {
-  width: 100% !important;  /* fill parent */
-  height: 100% !important; /* fill parent */
+  width: 100% !important;
+  height: 100% !important;
 }
 
+@media (max-width: 768px) {
+  .map-container {
+    height: 300px;
+  }
+}
 
-/* RSVP Form */
+/* =========================
+   RSVP FORM
+========================= */
 .rsvp-form {
-  max-width: 700px;
+  max-width: 720px;
   margin: 0 auto;
+  padding: 2.5rem;
   display: flex;
   flex-direction: column;
   gap: 20px;
-  padding: 3rem;
+  background: rgba(255,255,255,0.96);
   border-radius: 24px;
-  background: rgba(255,255,255,0.95);
   box-shadow: 0 10px 30px rgba(0,0,0,0.12);
 }
 
+@media (max-width: 768px) {
+  .rsvp-form {
+    padding: 1.5rem;
+  }
+}
+
 .rsvp-card {
+  background: #fff;
+  padding: 22px;
+  border-radius: 20px;
   display: flex;
   flex-direction: column;
   gap: 14px;
-  padding: 24px;
-  border-radius: 20px;
-  background: #fff;
 }
 
+/* Inputs */
 .input-group {
   display: flex;
   gap: 12px;
+}
+
+@media (max-width: 600px) {
+  .input-group {
+    flex-direction: column;
+  }
 }
 
 input,
@@ -198,47 +249,47 @@ textarea {
   font-size: 1rem;
   width: 100%;
   background: #fff;
+  color: #5a3b42;
 }
 
+input::placeholder,
+textarea::placeholder {
+  color: #9c7a83;
+}
 
-/* 🌸 Perfect-circle solid radios */
+/* =========================
+   RADIO BUTTONS
+========================= */
 .option {
   display: flex;
   align-items: center;
   gap: 12px;
   cursor: pointer;
   font-size: 1rem;
-  color: #5a3b42;
 }
 
 .option input[type="radio"] {
-  appearance: none;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-
-  /* hard reset */
   all: unset;
-
-  /* force perfect square */
   width: 20px;
   aspect-ratio: 1 / 1;
-
   border-radius: 50%;
   border: 2px solid #b76e79;
-  background-color: #fff;
-
-  display: inline-block;
-  flex-shrink: 0;
-
+  background: #fff;
   cursor: pointer;
+  flex-shrink: 0;
 }
 
-/* checked = filled circle */
 .option input[type="radio"]:checked {
-  background-color: #b76e79;
-  border-color: #b76e79;
+  background: #b76e79;
 }
 
+/* =========================
+   GUESTS
+========================= */
+.guest-card {
+  border: 2px dashed #e2b7c1;
+  background: #fff7f9;
+}
 
 .guest-header {
   display: flex;
@@ -250,29 +301,18 @@ textarea {
   background: none;
   border: none;
   color: #b76e79;
-  font-size: 0.9rem;
   cursor: pointer;
   text-decoration: underline;
 }
 
-.remove-guest:hover {
-  opacity: 0.7;
-}
-
-
-
-/* Guest card */
-.guest-card {
-  border: 2px dashed #e2b7c1;
-  background: #fff7f9;
-}
-
-/* Buttons */
+/* =========================
+   BUTTONS
+========================= */
 .add-guest {
-  background: none;
   border: 2px dashed #b76e79;
   padding: 10px 18px;
   border-radius: 14px;
+  background: none;
   color: #b76e79;
   cursor: pointer;
   margin: 0 auto;
@@ -283,6 +323,7 @@ textarea {
   color: #fff;
 }
 
+/* RSVP Submit Button */
 .rsvp-submit {
   padding: 16px;
   border-radius: 30px;
@@ -291,47 +332,32 @@ textarea {
   color: #fff;
   font-size: 1.1rem;
   cursor: pointer;
+  transition: 0.3s ease;
 }
 
-.rsvp-submit:hover {
+/* Hover effect only when enabled */
+.rsvp-submit:hover:enabled {
   transform: translateY(-2px);
   box-shadow: 0 12px 30px rgba(183,110,121,0.3);
 }
 
-.thank-you {
-  font-size: 1.2rem;
-  text-align: center;
-  color: #6b4a52;
+/* Disabled state */
+.rsvp-submit:disabled {
+  background: #ccc;       /* greyed out */
+  color: #666;            /* darker grey text */
+  cursor: not-allowed;    /* shows not-allowed cursor */
+  box-shadow: none;       /* remove hover shadow */
+  transform: none;        /* remove hover transform */
 }
 
 
-.collapsible {
-  overflow: hidden;
-  animation: collapseIn 0.35s ease;
-}
-
-@keyframes collapseIn {
-  from {
-    opacity: 0;
-    transform: translateY(-6px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-
-.dietary-input {
-  max-width: 420px;
-  margin: 0 auto;
-}
-
+/* =========================
+   SUCCESS / CONFETTI
+========================= */
 .success-screen {
   text-align: center;
   padding: 3rem;
 }
-
 
 .confetti::before,
 .confetti::after {
@@ -347,17 +373,29 @@ textarea {
 }
 
 @keyframes fall {
-  from {
-    top: -20px;
-    opacity: 1;
-  }
-  to {
-    top: 100%;
-    opacity: 0;
-  }
+  from { top: -20px; opacity: 1; }
+  to { top: 100%; opacity: 0; }
+}
+
+/* =========================
+   UTIL
+========================= */
+.dietary-input {
+  max-width: 420px;
+  margin: 0 auto;
 }
 
 fieldset.disabled {
   opacity: 0.5;
   pointer-events: none;
+}
+
+/* 🔧 Fix browser autofill (iOS + Chrome) */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0 1000px #ffffff inset !important; /* force white background */
+  -webkit-text-fill-color: #000000 !important; /* force text color */
+  transition: background-color 9999s ease-in-out 0s; /* prevent flashing */
 }

@@ -65,6 +65,31 @@ export default function Home() {
     setSubmitted(true);
   };
 
+  // ✅ Validate that all required fields are filled
+  const isFormValid = () => {
+    if (form.rsvp !== "yes") return true; // No need for menu if not attending
+
+    // Main guest fields
+    if (!form.firstName.trim() || !form.lastName.trim() || !form.email.trim()) return false;
+    if (!form.starter || !form.main || !form.dessert || !form.afterParty) return false;
+
+    // Additional guests
+    for (let guest of form.guests) {
+      if (
+        !guest.firstName.trim() ||
+        !guest.lastName.trim() ||
+        !guest.starter ||
+        !guest.main ||
+        !guest.dessert ||
+        !guest.afterParty
+      ) {
+        return false;
+      }
+    }
+
+    return true;
+  };
+
   return (
     <main className="home">
 
@@ -106,9 +131,9 @@ export default function Home() {
       <section id="schedule" className="section schedule">
         <h2 className="section-title">Wedding Schedule</h2>
         <ul className="schedule-list">
-          <li><strong>2:00 PM</strong> – Ceremony</li>
-          <li><strong>3:30 PM</strong> – Cocktail Hour</li>
-          <li><strong>5:00 PM</strong> – Reception</li>
+          <li><strong>9:00 AM</strong> – Arrival</li>
+          <li><strong>11:00 AM</strong> – Ceremony</li>
+          <li><strong>01:00 PM</strong> – Reception</li>
         </ul>
       </section>
 
@@ -143,10 +168,29 @@ export default function Home() {
             <div className="rsvp-card">
               <h3>Guest Information</h3>
               <div className="input-group">
-                <input name="firstName" placeholder="First Name *" required value={form.firstName} onChange={handleChange} />
-                <input name="lastName" placeholder="Last Name *" required value={form.lastName} onChange={handleChange} />
+                <input
+                  name="firstName"
+                  placeholder="First Name *"
+                  required
+                  value={form.firstName}
+                  onChange={handleChange}
+                />
+                <input
+                  name="lastName"
+                  placeholder="Last Name *"
+                  required
+                  value={form.lastName}
+                  onChange={handleChange}
+                />
               </div>
-              <input type="email" name="email" placeholder="Email *" required value={form.email} onChange={handleChange} />
+              <input
+                type="email"
+                name="email"
+                placeholder="Email *"
+                required
+                value={form.email}
+                onChange={handleChange}
+              />
             </div>
 
             {/* RSVP */}
@@ -187,16 +231,34 @@ export default function Home() {
                   <h3>Menu Selection</h3>
 
                   <h4>Starter</h4>
-                  <label className="option"><input type="radio" name="starter" value="carrot-soup" onChange={handleChange} /><span>Vegetarian – Carrot Soup</span></label>
-                  <label className="option"><input type="radio" name="starter" value="oysters" onChange={handleChange} /><span>Non-Vegetarian – Oysters</span></label>
+                  <label className="option">
+                    <input type="radio" name="starter" value="carrot-soup" onChange={handleChange} required />
+                    <span>Vegetarian – Carrot Soup</span>
+                  </label>
+                  <label className="option">
+                    <input type="radio" name="starter" value="oysters" onChange={handleChange} />
+                    <span>Non-Vegetarian – Oysters</span>
+                  </label>
 
                   <h4>Main</h4>
-                  <label className="option"><input type="radio" name="main" value="super-salad" onChange={handleChange} /><span>Vegetarian – Super Salad</span></label>
-                  <label className="option"><input type="radio" name="main" value="sunday-dinner" onChange={handleChange} /><span>Non-Vegetarian – Sunday Dinner</span></label>
+                  <label className="option">
+                    <input type="radio" name="main" value="super-salad" onChange={handleChange} required />
+                    <span>Vegetarian – Super Salad</span>
+                  </label>
+                  <label className="option">
+                    <input type="radio" name="main" value="sunday-dinner" onChange={handleChange} />
+                    <span>Non-Vegetarian – Sunday Dinner</span>
+                  </label>
 
                   <h4>Dessert</h4>
-                  <label className="option"><input type="radio" name="dessert" value="sticky-toffee" onChange={handleChange} /><span>Sticky Toffee Pudding</span></label>
-                  <label className="option"><input type="radio" name="dessert" value="chocolate-cake" onChange={handleChange} /><span>Chocolate Cake</span></label>
+                  <label className="option">
+                    <input type="radio" name="dessert" value="sticky-toffee" onChange={handleChange} required />
+                    <span>Sticky Toffee Pudding</span>
+                  </label>
+                  <label className="option">
+                    <input type="radio" name="dessert" value="chocolate-cake" onChange={handleChange} />
+                    <span>Chocolate Cake</span>
+                  </label>
 
                   <input
                     className="dietary-input"
@@ -210,8 +272,14 @@ export default function Home() {
                 {/* MAIN AFTER PARTY */}
                 <div className="rsvp-card">
                   <h3>After Party</h3>
-                  <label className="option"><input type="radio" name="afterParty" value="yes" onChange={handleChange} /><span>Yes, I’ll join 🎉</span></label>
-                  <label className="option"><input type="radio" name="afterParty" value="no" onChange={handleChange} /><span>No, I’ll head home</span></label>
+                  <label className="option">
+                    <input type="radio" name="afterParty" value="yes" onChange={handleChange} required />
+                    <span>Yes, I’ll join 🎉</span>
+                  </label>
+                  <label className="option">
+                    <input type="radio" name="afterParty" value="no" onChange={handleChange} />
+                    <span>No, I’ll head home</span>
+                  </label>
                 </div>
 
                 {/* ADDITIONAL GUESTS */}
@@ -223,21 +291,39 @@ export default function Home() {
                     </div>
 
                     <div className="input-group">
-                      <input placeholder="First Name" value={guest.firstName} onChange={(e) => handleChange(e, index, "firstName")} />
-                      <input placeholder="Last Name" value={guest.lastName} onChange={(e) => handleChange(e, index, "lastName")} />
+                      <input placeholder="First Name *" value={guest.firstName} onChange={(e) => handleChange(e, index, "firstName")} required />
+                      <input placeholder="Last Name *" value={guest.lastName} onChange={(e) => handleChange(e, index, "lastName")} required />
                     </div>
 
                     <h4>Starter</h4>
-                    <label className="option"><input type="radio" name={`guest-${index}-starter`} value="carrot-soup" onChange={(e) => handleChange(e, index, "starter")} /><span>Vegetarian – Carrot Soup</span></label>
-                    <label className="option"><input type="radio" name={`guest-${index}-starter`} value="oysters" onChange={(e) => handleChange(e, index, "starter")} /><span>Non-Vegetarian – Oysters</span></label>
+                    <label className="option">
+                      <input type="radio" name={`guest-${index}-starter`} value="carrot-soup" onChange={(e) => handleChange(e, index, "starter")} required />
+                      <span>Vegetarian – Carrot Soup</span>
+                    </label>
+                    <label className="option">
+                      <input type="radio" name={`guest-${index}-starter`} value="oysters" onChange={(e) => handleChange(e, index, "starter")} />
+                      <span>Non-Vegetarian – Oysters</span>
+                    </label>
 
                     <h4>Main</h4>
-                    <label className="option"><input type="radio" name={`guest-${index}-main`} value="super-salad" onChange={(e) => handleChange(e, index, "main")} /><span>Vegetarian – Super Salad</span></label>
-                    <label className="option"><input type="radio" name={`guest-${index}-main`} value="sunday-dinner" onChange={(e) => handleChange(e, index, "main")} /><span>Non-Vegetarian – Sunday Dinner</span></label>
+                    <label className="option">
+                      <input type="radio" name={`guest-${index}-main`} value="super-salad" onChange={(e) => handleChange(e, index, "main")} required />
+                      <span>Vegetarian – Super Salad</span>
+                    </label>
+                    <label className="option">
+                      <input type="radio" name={`guest-${index}-main`} value="sunday-dinner" onChange={(e) => handleChange(e, index, "main")} />
+                      <span>Non-Vegetarian – Sunday Dinner</span>
+                    </label>
 
                     <h4>Dessert</h4>
-                    <label className="option"><input type="radio" name={`guest-${index}-dessert`} value="sticky-toffee" onChange={(e) => handleChange(e, index, "dessert")} /><span>Sticky Toffee Pudding</span></label>
-                    <label className="option"><input type="radio" name={`guest-${index}-dessert`} value="chocolate-cake" onChange={(e) => handleChange(e, index, "dessert")} /><span>Chocolate Cake</span></label>
+                    <label className="option">
+                      <input type="radio" name={`guest-${index}-dessert`} value="sticky-toffee" onChange={(e) => handleChange(e, index, "dessert")} required />
+                      <span>Sticky Toffee Pudding</span>
+                    </label>
+                    <label className="option">
+                      <input type="radio" name={`guest-${index}-dessert`} value="chocolate-cake" onChange={(e) => handleChange(e, index, "dessert")} />
+                      <span>Chocolate Cake</span>
+                    </label>
 
                     <input
                       className="dietary-input"
@@ -247,8 +333,14 @@ export default function Home() {
                     />
 
                     <h4>After Party</h4>
-                    <label className="option"><input type="radio" name={`guest-${index}-afterParty`} value="yes" onChange={(e) => handleChange(e, index, "afterParty")} /><span>Attending 🎉</span></label>
-                    <label className="option"><input type="radio" name={`guest-${index}-afterParty`} value="no" onChange={(e) => handleChange(e, index, "afterParty")} /><span>Not attending</span></label>
+                    <label className="option">
+                      <input type="radio" name={`guest-${index}-afterParty`} value="yes" onChange={(e) => handleChange(e, index, "afterParty")} required />
+                      <span>Attending 🎉</span>
+                    </label>
+                    <label className="option">
+                      <input type="radio" name={`guest-${index}-afterParty`} value="no" onChange={(e) => handleChange(e, index, "afterParty")} />
+                      <span>Not attending</span>
+                    </label>
                   </div>
                 ))}
 
@@ -258,7 +350,9 @@ export default function Home() {
               </>
             )}
 
-            <button type="submit" className="rsvp-submit">Submit RSVP</button>
+            <button type="submit" className="rsvp-submit" disabled={!isFormValid()}>
+              Submit RSVP
+            </button>
           </form>
         )}
       </section>
