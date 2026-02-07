@@ -1,12 +1,13 @@
 import { useState } from "react";
 import "./Home.css";
 import MapDisplay from "./MapDisplay";
+import personIcon from "../assets/person-icon-1682.png";
 
 const people = [
-  { name: "Sophie Limon", role: "Bride", img: "https://via.placeholder.com/150" },
-  { name: "Kieran Ryan", role: "Groom", img: "https://via.placeholder.com/150" },
-  { name: "Zoe Limon", role: "Maid of Honor", img: "https://via.placeholder.com/150" },
-  { name: "Cameron James", role: "Best Man", img: "https://via.placeholder.com/150" },
+  { name: "Sophie Limon", role: "Bride", img: personIcon },
+  { name: "Kieran Ryan", role: "Groom", img: personIcon },
+  { name: "Zoe Limon", role: "Maid of Honor", img: personIcon },
+  { name: "Cameron James", role: "Best Man", img: personIcon },
 ];
 
 export default function Home() {
@@ -97,26 +98,31 @@ export default function Home() {
 
       {/* NAVBAR */}
       <nav className="navbar">
-        <div className="logo">Sophie & Kieran</div>
-        <ul className="nav-links">
-          <li><a href="#people">Wedding Party</a></li>
-          <li><a href="#schedule">Schedule</a></li>
-          <li><a href="#directions">Directions</a></li>
-          <li><a href="#rsvp">RSVP</a></li>
-        </ul>
+        <div className="navbar-inner">
+          <div className="logo">Sophie & Kieran</div>
+          <ul className="nav-links">
+            <li><a href="#people">Wedding Party</a></li>
+            <li><a href="#schedule">Schedule</a></li>
+            <li><a href="#directions">Directions</a></li>
+            <li><a href="#rsvp">RSVP</a></li>
+          </ul>
+        </div>
       </nav>
 
       {/* HERO */}
       <section className="section hero">
+        <div className="container">
         <h1 className="couple-name">Sophie & Kieran</h1>
         <p className="subtitle">
           Together with their families, Sophie Louise Limon and Kieran Ryan,
           invite you to celebrate their marriage on 6th September 2026
         </p>
+        </div>
       </section>
 
       {/* PEOPLE */}
       <section id="people" className="section people">
+        <div className="container">
         <h2 className="section-title">With Love & Support From</h2>
         <div className="people-container">
           {people.map((person, i) => (
@@ -127,20 +133,24 @@ export default function Home() {
             </div>
           ))}
         </div>
+        </div>
       </section>
 
       {/* SCHEDULE */}
       <section id="schedule" className="section schedule">
+        <div className="container">
         <h2 className="section-title">Wedding Schedule</h2>
         <ul className="schedule-list">
           <li><strong>9:00 AM</strong> – Arrival</li>
           <li><strong>11:00 AM</strong> – Ceremony</li>
           <li><strong>01:00 PM</strong> – Reception</li>
         </ul>
+        </div>
       </section>
 
       {/* DIRECTIONS */}
       <section id="directions" className="section directions">
+        <div className="container">
         <h2 className="section-title">Directions</h2>
         <p className="directions-text">
           Rushpool Hall Wedding Venue<br />
@@ -151,10 +161,12 @@ export default function Home() {
         <div className="map-container">
           <MapDisplay />
         </div>
+        </div>
       </section>
 
       {/* RSVP */}
       <section id="rsvp" className="section rsvp">
+        <div className="container">
         <h2 className="section-title">RSVP</h2>
 
         {submitted ? (
@@ -364,6 +376,7 @@ export default function Home() {
 
           </form>
         )}
+        </div>
       </section>
     </main>
   );

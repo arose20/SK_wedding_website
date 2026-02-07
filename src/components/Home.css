@@ -18,20 +18,35 @@ body, html, main {
   color: #5a3b42;
 }
 
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+/* =========================
+   NAVBAR
+========================= */
 /* =========================
    NAVBAR
 ========================= */
 .navbar {
   width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 20px 5vw;
   background: rgba(255,255,255,0.95);
   backdrop-filter: blur(8px);
   position: sticky;
   top: 0;
   z-index: 100;
+}
+
+/* NEW: centered inner wrapper */
+.navbar-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .navbar .logo {
@@ -62,9 +77,10 @@ body, html, main {
   color: #6ca0dc;
 }
 
+
 /* ✅ TRUE mobile centering */
 @media (max-width: 768px) {
-  .navbar {
+  .navbar-inner {
     flex-direction: column;
     align-items: center;
     justify-content: center;
@@ -86,12 +102,13 @@ body, html, main {
   }
 }
 
+
 /* =========================
    SECTIONS
 ========================= */
 .section {
   width: 100%;
-  padding: 6rem 5vw;
+  padding: 6rem 1.5rem;
   text-align: center;
 }
 
@@ -152,7 +169,7 @@ body, html, main {
   width: 140px;
   height: 140px;
   border-radius: 50%;
-  object-fit: cover;
+  object-fit: contain;
   margin-bottom: 1rem;
 }
 
