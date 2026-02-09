@@ -271,7 +271,7 @@ export default function Home() {
                   </label>
                   <label className="option">
                     <input type="radio" name="dessert" value="chocolate-cake" onChange={handleChange} />
-                    <span>Chocolate Cake</span>
+                    <span>Cheese Cake</span>
                   </label>
 
                   <input
