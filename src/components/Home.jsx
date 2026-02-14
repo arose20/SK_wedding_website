@@ -7,7 +7,7 @@ const people = [
   { name: "Sophie Limon", role: "Bride", img: personIcon },
   { name: "Kieran Ryan", role: "Groom", img: personIcon },
   { name: "Zoe Limon", role: "Maid of Honor", img: personIcon },
-  { name: "Cameron James", role: "Best Man", img: personIcon },
+  { name: "Cameron Crawshaw", role: "Best Man", img: personIcon },
 ];
 
 export default function Home() {
@@ -112,13 +112,36 @@ export default function Home() {
       {/* HERO */}
       <section className="section hero">
         <div className="container">
-        <h1 className="couple-name">Sophie & Kieran</h1>
+        <h1 className="couple-name">Sophie & Kieran are getting married!</h1>
         <p className="subtitle">
-          Together with their families, Sophie Louise Limon and Kieran Ryan,
+          Sophie Limon and Kieran Ryan,
           invite you to celebrate their marriage on 6th September 2026
         </p>
         </div>
       </section>
+
+
+      {/* remove bullet point so looks nice, music off half 11 */}
+      {/* SCHEDULE */}
+      <section id="schedule" className="section schedule">
+        <div className="container">
+        <h2 className="section-title">Wedding Schedule</h2>
+        <ul className="schedule-list">
+          <li><strong>12:30 PM</strong> – Arrival</li>
+          <li><strong>01:30 AM</strong> – Ceremony begins</li>
+          <li><strong>02:00 PM</strong> – Drinks reception</li>
+          <li><strong>03:45 PM</strong> – Ballroom attendance</li>
+          <li><strong>04:00 PM</strong> – Speeches</li>
+          <li><strong>04:30 PM</strong> – Dinner</li>
+          <li><strong>07:00 PM</strong> – Evening guests arrive</li>
+          <li><strong>07:30 PM</strong> – Cake cut and first dance</li>
+          <li><strong>08:00 PM</strong> – Evening food</li>
+          <li><strong>11:30 PM</strong> – Music off and bar close</li>
+          <li><strong>12:00 AM</strong> – Carriages</li>
+        </ul>
+        </div>
+      </section>
+
 
       {/* PEOPLE */}
       <section id="people" className="section people">
@@ -136,17 +159,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* SCHEDULE */}
-      <section id="schedule" className="section schedule">
-        <div className="container">
-        <h2 className="section-title">Wedding Schedule</h2>
-        <ul className="schedule-list">
-          <li><strong>9:00 AM</strong> – Arrival</li>
-          <li><strong>11:00 AM</strong> – Ceremony</li>
-          <li><strong>01:00 PM</strong> – Reception</li>
-        </ul>
-        </div>
-      </section>
+      
 
       {/* DIRECTIONS */}
       <section id="directions" className="section directions">
@@ -163,6 +176,22 @@ export default function Home() {
         </div>
         </div>
       </section>
+      
+      {/* Accommodation */}
+
+
+
+
+      {/* Gifts */}
+
+
+
+
+
+
+
+
+
 
       {/* RSVP */}
       <section id="rsvp" className="section rsvp">
@@ -212,11 +241,11 @@ export default function Home() {
               <h3>Your RSVP</h3>
               <label className="option">
                 <input type="radio" name="rsvp" value="yes" onChange={handleChange} />
-                <span>I’ll Be There ✅</span>
+                <span>I’ll Be There</span>
               </label>
               <label className="option">
                 <input type="radio" name="rsvp" value="no" onChange={handleChange} />
-                <span>Can’t Make It ❌</span>
+                <span>Can’t Make It</span>
               </label>
             </div>
 
