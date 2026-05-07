@@ -5,6 +5,10 @@
 @import url("https://fonts.googleapis.com/css2?family=Parisienne&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Italianno&display=swap");
 
+:root {
+  color-scheme: light;
+}
+
 /* =========================
    GLOBAL
 ========================= */
