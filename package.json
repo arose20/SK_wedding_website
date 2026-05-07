@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://arose20.github.io/SK_wedding_website",
+  "homepage": "https://arose20.github.io/SK_wedding_website/",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
