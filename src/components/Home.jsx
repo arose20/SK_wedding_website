@@ -2,13 +2,16 @@ import { useState } from "react";
 import "./Home.css";
 import MapDisplay from "./MapDisplay";
 import personIcon from "../assets/person-icon-1682.png";
+import sketchImg from "../assets/sketch_with_background.png";
 
 const people = [
   { name: "Sophie Limon", role: "Bride", img: personIcon },
   { name: "Kieran Ryan", role: "Groom", img: personIcon },
-  { name: "Zoe Limon", role: "Maid of Honor", img: personIcon },
+  { name: "Zoe Limon", role: "Bridesmaid", img: personIcon },
   { name: "Cameron Crawshaw", role: "Best Man", img: personIcon },
 ];
+
+const MAX_GUESTS = 2;
 
 export default function Home() {
   const [form, setForm] = useState({
@@ -38,6 +41,8 @@ export default function Home() {
   };
 
   const addGuest = () => {
+    if (form.guests.length >= MAX_GUESTS) return;
+
     setForm({
       ...form,
       guests: [
@@ -104,6 +109,7 @@ export default function Home() {
             <li><a href="#people">Wedding Party</a></li>
             <li><a href="#schedule">Schedule</a></li>
             <li><a href="#directions">Directions</a></li>
+            <li><a href="#accommodation">Accommodation</a></li>
             <li><a href="#rsvp">RSVP</a></li>
           </ul>
         </div>
@@ -111,13 +117,20 @@ export default function Home() {
 
       {/* HERO */}
       <section className="section hero">
-        <div className="container">
-        <h1 className="couple-name">Sophie & Kieran are getting married!</h1>
+        <div className="hero-content">
+        <img src={sketchImg} alt="Sophie and Kieran" className="hero-image" />
+
+        <h1 className="couple-name">
+          Sophie & Kieran <br />
+          are getting married!
+        </h1>
         <p className="subtitle">
-          Sophie Limon and Kieran Ryan,
-          invite you to celebrate their marriage on 6th September 2026
+          Sophie Limon and Kieran Ryan,<br />
+          invite you to celebrate their marriage <br />
+          on 6th September 2026<br />
+          at Rushpool Hall.
         </p>
-        </div>
+      </div>
       </section>
 
 
@@ -127,17 +140,17 @@ export default function Home() {
         <div className="container">
         <h2 className="section-title">Wedding Schedule</h2>
         <ul className="schedule-list">
-          <li><strong>12:30 PM</strong> – Arrival</li>
-          <li><strong>01:30 AM</strong> – Ceremony begins</li>
-          <li><strong>02:00 PM</strong> – Drinks reception</li>
-          <li><strong>03:45 PM</strong> – Ballroom attendance</li>
-          <li><strong>04:00 PM</strong> – Speeches</li>
-          <li><strong>04:30 PM</strong> – Dinner</li>
-          <li><strong>07:00 PM</strong> – Evening guests arrive</li>
-          <li><strong>07:30 PM</strong> – Cake cut and first dance</li>
-          <li><strong>08:00 PM</strong> – Evening food</li>
-          <li><strong>11:30 PM</strong> – Music off and bar close</li>
-          <li><strong>12:00 AM</strong> – Carriages</li>
+          <li><strong>12:30 </strong> – Arrival</li>
+          <li><strong>13:30 </strong> – Ceremony begins</li>
+          <li><strong>14:00 </strong> – Drinks reception</li>
+          <li><strong>15:45 </strong> – Ballroom attendance</li>
+          <li><strong>16:00 </strong> – Speeches</li>
+          <li><strong>16:30 </strong> – Dinner</li>
+          <li><strong>19:00 </strong> – Evening guests arrive</li>
+          <li><strong>19:30 </strong> – Cake cut and first dance</li>
+          <li><strong>20:00 </strong> – Evening food</li>
+          <li><strong>23:30 </strong> – Music off and bar close</li>
+          <li><strong>00:00 </strong> – Carriages</li>
         </ul>
         </div>
       </section>
@@ -164,7 +177,7 @@ export default function Home() {
       {/* DIRECTIONS */}
       <section id="directions" className="section directions">
         <div className="container">
-        <h2 className="section-title">Directions</h2>
+        <h1 className="section-title">Directions</h1>
         <p className="directions-text">
           Rushpool Hall Wedding Venue<br />
           Saltburn Ln<br />
@@ -178,22 +191,22 @@ export default function Home() {
       </section>
       
       {/* Accommodation */}
+      <section id="accommodation" className="section accommodation">
+      <div className="container">
+        <h1 className="section-title">Accommodation</h1>
+
+        <p className="directions-text">
+          Limited rooms are available at Rushpool Hall. Please click <a href="https://app.thebookingfactory.com/rushpool-hall/book/060926-kieran-sophie#/" target="_blank" rel="noopener noreferrer">here</a> to view available rooms.<br /><br />
+
+          Check in is open from 3pm and check out time is 10:30am for all guests.<br /><br />
+
+          Please refer to the wedding invite for the unique code.
+        </p>
+      </div>
+    </section>
 
 
-
-
-      {/* Gifts */}
-
-
-
-
-
-
-
-
-
-
-      {/* RSVP */}
+      {/* RSVP <- add message so couple fill out once*/}
       <section id="rsvp" className="section rsvp">
         <div className="container">
         <h2 className="section-title">RSVP</h2>
@@ -274,34 +287,25 @@ export default function Home() {
                   <h3>Menu Selection</h3>
 
                   <h4>Starter</h4>
-                  <label className="option">
-                    <input type="radio" name="starter" value="carrot-soup" onChange={handleChange} required />
-                    <span>Vegetarian – Carrot Soup</span>
-                  </label>
-                  <label className="option">
-                    <input type="radio" name="starter" value="oysters" onChange={handleChange} />
-                    <span>Non-Vegetarian – Oysters</span>
-                  </label>
+                  <p>Seasonal Soup</p>
 
                   <h4>Main</h4>
+                  <p>Roast dinner: served with creamy mash, vegetables and Yorkshire pudding</p>
                   <label className="option">
-                    <input type="radio" name="main" value="super-salad" onChange={handleChange} required />
-                    <span>Vegetarian – Super Salad</span>
+                    <input type="radio" name="main" value="Chicken" onChange={handleChange} required />
+                    <span>Chicken</span>
                   </label>
                   <label className="option">
-                    <input type="radio" name="main" value="sunday-dinner" onChange={handleChange} />
-                    <span>Non-Vegetarian – Sunday Dinner</span>
+                    <input type="radio" name="main" value="Beef" onChange={handleChange} />
+                    <span>Beef</span>
+                  </label>
+                  <label className="option">
+                    <input type="radio" name="main" value="V" onChange={handleChange} />
+                    <span>Baked Wellington (V)</span>
                   </label>
 
                   <h4>Dessert</h4>
-                  <label className="option">
-                    <input type="radio" name="dessert" value="sticky-toffee" onChange={handleChange} required />
-                    <span>Sticky Toffee Pudding</span>
-                  </label>
-                  <label className="option">
-                    <input type="radio" name="dessert" value="chocolate-cake" onChange={handleChange} />
-                    <span>Cheese Cake</span>
-                  </label>
+                  <p>Fresh lemon tart</p>
 
                   <input
                     className="dietary-input"
@@ -325,11 +329,13 @@ export default function Home() {
                   </label>
                 </div>
 
-                {/* ADDITIONAL GUESTS */}
+                <p>Please add information for additional guests which are listed on your invitation.</p>
+
+                {/* ADDITIONAL GUESTS <- set limit to 2 extra*/}
                 {form.guests.map((guest, index) => (
                   <div className="rsvp-card guest-card" key={index}>
                     <div className="guest-header">
-                      <h4>Additional Guest {index + 1}</h4>
+                      <h4>Additional Guest {index + 2}</h4>
                       <button type="button" className="remove-guest" onClick={() => removeGuest(index)}>Remove</button>
                     </div>
 
@@ -339,40 +345,32 @@ export default function Home() {
                     </div>
 
                     <h4>Starter</h4>
-                    <label className="option">
-                      <input type="radio" name={`guest-${index}-starter`} value="carrot-soup" onChange={(e) => handleChange(e, index, "starter")} required />
-                      <span>Vegetarian – Carrot Soup</span>
-                    </label>
-                    <label className="option">
-                      <input type="radio" name={`guest-${index}-starter`} value="oysters" onChange={(e) => handleChange(e, index, "starter")} />
-                      <span>Non-Vegetarian – Oysters</span>
-                    </label>
+                    <p>Seasonal Soup</p>
 
                     <h4>Main</h4>
+                    <p>Roast dinner: served with creamy mash, vegetables and Yorkshire pudding</p>
                     <label className="option">
-                      <input type="radio" name={`guest-${index}-main`} value="super-salad" onChange={(e) => handleChange(e, index, "main")} required />
-                      <span>Vegetarian – Super Salad</span>
+                      <input type="radio" name="main" value="Chicken" onChange={handleChange} required />
+                      <span>Chicken</span>
                     </label>
                     <label className="option">
-                      <input type="radio" name={`guest-${index}-main`} value="sunday-dinner" onChange={(e) => handleChange(e, index, "main")} />
-                      <span>Non-Vegetarian – Sunday Dinner</span>
+                      <input type="radio" name="main" value="Beef" onChange={handleChange} />
+                      <span>Beef</span>
+                    </label>
+                    <label className="option">
+                      <input type="radio" name="main" value="V" onChange={handleChange} />
+                      <span>Baked Wellington (V)</span>
                     </label>
 
                     <h4>Dessert</h4>
-                    <label className="option">
-                      <input type="radio" name={`guest-${index}-dessert`} value="sticky-toffee" onChange={(e) => handleChange(e, index, "dessert")} required />
-                      <span>Sticky Toffee Pudding</span>
-                    </label>
-                    <label className="option">
-                      <input type="radio" name={`guest-${index}-dessert`} value="chocolate-cake" onChange={(e) => handleChange(e, index, "dessert")} />
-                      <span>Chocolate Cake</span>
-                    </label>
+                    <p>Fresh lemon tart</p>
 
                     <input
                       className="dietary-input"
+                      name="dietary"
                       placeholder="Dietary restrictions (optional)"
-                      value={guest.dietary}
-                      onChange={(e) => handleChange(e, index, "dietary")}
+                      value={form.dietary}
+                      onChange={handleChange}
                     />
 
                     <h4>After Party</h4>
@@ -387,9 +385,11 @@ export default function Home() {
                   </div>
                 ))}
 
-                <button type="button" className="add-guest" onClick={addGuest}>
-                  + Add Guest
-                </button>
+                {form.guests.length < MAX_GUESTS && (
+                  <button type="button" className="add-guest" onClick={addGuest}>
+                    + Add Guest
+                  </button>
+                )}
               </>
             )}
 

@@ -1,3 +1,4 @@
+/*
 import { useEffect, useState } from "react";
 import Home from "./components/Home";
 import LoadingScreen from "./components/LoadingScreen";
@@ -20,6 +21,15 @@ function App() {
       {!loading && <Home />}
     </>
   );
+}
+
+export default App;
+*/
+
+import Home from "./components/Home";
+
+function App() {
+  return <Home />;
 }
 
 export default App;

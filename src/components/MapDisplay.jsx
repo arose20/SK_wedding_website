@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { MapContainer, TileLayer, Marker, Popup, ScaleControl, useMap } from 'react-leaflet';
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
@@ -22,27 +22,12 @@ export const redMarkerIcon = new L.Icon({
   shadowSize: [41, 41],
 });
 
-// Component to fit map bounds
-function FitBounds({ bounds }) {
-  const map = useMap();
-
-  useEffect(() => {
-    if (!bounds || bounds.length === 0) return;
-    const leafletBounds = L.latLngBounds(bounds);
-    map.fitBounds(leafletBounds, { padding: [1000, 1000] });
-  }, [bounds, map]);
-
-  return null;
-}
-
-// Reset view button
-function ResetViewButton({ bounds }) {
+// Reset view button (now uses setView)
+function ResetViewButton() {
   const map = useMap();
 
   const handleReset = () => {
-    if (!bounds || bounds.length === 0) return;
-    const leafletBounds = L.latLngBounds(bounds);
-    map.fitBounds(leafletBounds, { padding: [1000, 1000] });
+    map.setView([54.5757, -0.9717], 12); // <-- control zoom here
   };
 
   return (
@@ -59,20 +44,18 @@ function ResetViewButton({ bounds }) {
 export default function MapDisplay() {
   const defaultMarkers = [
     {
-        id: 1,
-        position: [54.5757, -0.9717], // updated to exact address
-        title: "Rushpool Hall Wedding Venue\nSaltburn Ln, Saltburn-by-the-Sea TS12 1HD",
+      id: 1,
+      position: [54.5757, -0.9717],
+      title: "Rushpool Hall Wedding Venue\nSaltburn Ln, Saltburn-by-the-Sea TS12 1HD",
     },
-];
-
-  const allPositions = defaultMarkers.map(m => m.position);
+  ];
 
   return (
     <MapContainer
-    center={[54.5817, -0.9855]}  // center map on Rushpool Hall
-    zoom={1}                    // zoom in closer for venue
-    scrollWheelZoom={true}
-    className="leaflet-container"
+      center={[54.5757, -0.9717]} // exact marker position
+      zoom={12}                   // <-- adjust this to control zoom
+      scrollWheelZoom={true}
+      className="leaflet-container"
     >
       <TileLayer
         attribution='&copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors'
@@ -80,7 +63,7 @@ export default function MapDisplay() {
       />
 
       {defaultMarkers.map(({ id, position, title }) => (
-        <Marker key={id} position={position}>
+        <Marker key={id} position={position} icon={redMarkerIcon}>
           <Popup>
             {title.split('\n').map((line, i) => (
               <React.Fragment key={i}>
@@ -93,9 +76,7 @@ export default function MapDisplay() {
       ))}
 
       <ScaleControl position="bottomleft" />
-      <FitBounds bounds={allPositions} />
-      <ResetViewButton bounds={allPositions} />
+      <ResetViewButton />
     </MapContainer>
   );
 }
-
