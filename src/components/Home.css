@@ -6,7 +6,11 @@
 @import url("https://fonts.googleapis.com/css2?family=Italianno&display=swap");
 
 :root {
-  color-scheme: light;
+  color-scheme: light only;
+}
+
+html {
+  color-scheme: light only;
 }
 
 /* =========================
