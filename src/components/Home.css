@@ -5,13 +5,85 @@
 @import url("https://fonts.googleapis.com/css2?family=Parisienne&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Italianno&display=swap");
 
+/* =========================
+   FORCE LIGHT MODE
+========================= */
 :root {
-  color-scheme: light only;
+  color-scheme: light;
 }
 
 html {
-  color-scheme: light only;
+  color-scheme: light;
+  background: #fdf6f0 !important;
+  -webkit-text-size-adjust: 100%;
 }
+
+body {
+  background: #fdf6f0 !important;
+  color: #5a3b42 !important;
+}
+
+/* Force all form controls to stay light */
+input,
+textarea,
+select,
+button {
+  color-scheme: light;
+  background: #fff !important;
+  color: #5a3b42 !important;
+}
+
+/* Override mobile/browser dark mode transformations */
+@media (prefers-color-scheme: dark) {
+  html,
+  body,
+  main,
+  .home,
+  .section,
+  .navbar,
+  .rsvp-form,
+  .rsvp-card,
+  .person-card,
+  .guest-card {
+    background: #fdf6f0 !important;
+    color: #5a3b42 !important;
+  }
+
+  input,
+  textarea,
+  select,
+  button {
+    background: #ffffff !important;
+    color: #5a3b42 !important;
+    border-color: #d8bfc4 !important;
+  }
+
+  .navbar {
+    background: rgba(255, 255, 255, 0.95) !important;
+  }
+
+  .rsvp-card,
+  .person-card {
+    background: #ffffff !important;
+  }
+
+  .guest-card {
+    background: #fff7f9 !important;
+  }
+
+  .nav-links a,
+  .subtitle,
+  .directions-text,
+  .schedule-list,
+  .rsvp-card p {
+    color: #555 !important;
+  }
+}
+
+/* =========================
+   GLOBAL
+========================= */
+
 
 /* =========================
    GLOBAL
