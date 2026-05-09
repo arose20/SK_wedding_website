@@ -306,7 +306,7 @@ export default function Home() {
                     <p>Seasonal Soup</p>
 
                     <h4>Main</h4>
-                    <p>Roast dinner with Yorkshire pudding</p>
+                    <p>Roast dinner with vegetables and Yorkshire pudding</p>
 
                     <label className="option">
                       <input type="radio" name="main" value="Chicken" onChange={handleChange} required />
@@ -323,6 +323,10 @@ export default function Home() {
                       <span>Baked Wellington (V)</span>
                     </label>
 
+                    <h4>Dessert</h4>
+                    <p>Fresh lemon tart</p><br></br>
+
+                    <p>Please indicate below if you have any specific dietry requirements:</p>
                     <input
                       className="dietary-input"
                       name="dietary"
