@@ -351,7 +351,7 @@ export default function Home() {
                   </div>
 
                   {/* GUESTS */}
-                  <p>Please add additional guests (max 2).</p>
+                  <p>Add additional guests below if also invited(max 2).</p>
 
                   {form.guests.map((guest, index) => (
                     <div className="rsvp-card guest-card" key={index}>
