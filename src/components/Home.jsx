@@ -1,15 +1,21 @@
 import { useState } from "react";
 import "./Home.css";
 import MapDisplay from "./MapDisplay";
-import personIcon from "../assets/person-icon-1682.png";
+//import personIcon from "../assets/person-icon-1682.png";
 import sketchImg from "../assets/sketch_with_background.png";
 import { supabase } from "../lib/supabase";
+import person1 from "../assets/person1.jpeg";
+import person2 from "../assets/person2.jpeg";
+import person3 from "../assets/person3.jpeg";
+import person4 from "../assets/person4.jpeg";
+
+
 
 const people = [
-  { name: "Sophie Limon", role: "Bride", img: personIcon },
-  { name: "Kieran Ryan", role: "Groom", img: personIcon },
-  { name: "Zoe Limon", role: "Bridesmaid", img: personIcon },
-  { name: "Cameron Crawshaw", role: "Best Man", img: personIcon },
+  { name: "Sophie Limon", role: "Bride", img: person1 },
+  { name: "Kieran Ryan", role: "Groom", img: person2 },
+  { name: "Zoe Limon", role: "Bridesmaid", img: person3 },
+  { name: "Cameron Crawshaw", role: "Best Man", img: person4 },
 ];
 
 const MAX_GUESTS = 2;
@@ -185,7 +191,9 @@ export default function Home() {
           <div className="people-container">
             {people.map((person, i) => (
               <div className="person-card" key={i}>
-                <img src={person.img} alt={person.name} />
+                <div className="person-image">
+                  <img src={person.img} alt={person.name} />
+                </div>
                 <h3>{person.name}</h3>
                 <p>{person.role}</p>
               </div>
