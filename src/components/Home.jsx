@@ -320,7 +320,7 @@ export default function Home() {
 
                     <label className="option">
                       <input type="radio" name="main" value="V" onChange={handleChange} />
-                      <span>Vegetarian</span>
+                      <span>Vegetarian option</span>
                     </label>
 
                     <h4>Dessert</h4>
@@ -385,7 +385,7 @@ export default function Home() {
 
                       <label className="option">
                         <input type="radio" name={`guest-${index}-main`} value="V" onChange={(e) => handleChange(e, index, "main")} />
-                        <span>Vegetarian</span>
+                        <span>Vegetarian option</span>
                       </label>
 
                       <input
