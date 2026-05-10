@@ -320,7 +320,7 @@ export default function Home() {
 
                     <label className="option">
                       <input type="radio" name="main" value="V" onChange={handleChange} />
-                      <span>Baked Wellington (V)</span>
+                      <span>Vegetarian</span>
                     </label>
 
                     <h4>Dessert</h4>
@@ -351,7 +351,7 @@ export default function Home() {
                   </div>
 
                   {/* GUESTS */}
-                  <p>Add additional guests below if also invited(max 2).</p>
+                  <p>Add additional guests below if also invited (max 2).</p>
 
                   {form.guests.map((guest, index) => (
                     <div className="rsvp-card guest-card" key={index}>
@@ -385,7 +385,7 @@ export default function Home() {
 
                       <label className="option">
                         <input type="radio" name={`guest-${index}-main`} value="V" onChange={(e) => handleChange(e, index, "main")} />
-                        <span>Baked Wellington (V)</span>
+                        <span>Vegetarian</span>
                       </label>
 
                       <input
