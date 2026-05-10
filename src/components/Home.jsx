@@ -174,9 +174,9 @@ export default function Home() {
             <li><strong>14:00 </strong> – Drinks reception</li>
             <li><strong>15:45 </strong> – Ballroom attendance</li>
             <li><strong>16:00 </strong> – Speeches</li>
-            <li><strong>16:30 </strong> – Dinner</li>
+            <li><strong>16:30 </strong> – Wedding breakfast</li>
             <li><strong>19:00 </strong> – Evening guests arrive</li>
-            <li><strong>19:30 </strong> – Cake cut and first dance</li>
+            <li><strong>19:30 </strong> – Cake and first dance</li>
             <li><strong>20:00 </strong> – Evening food</li>
             <li><strong>23:30 </strong> – Music off and bar close</li>
             <li><strong>00:00 </strong> – Carriages</li>
@@ -230,9 +230,9 @@ export default function Home() {
             </a>{" "}
             to view available rooms.<br /><br />
 
-            Check in is open from 3pm and check out time is 10:30am for all guests.<br /><br />
+            Check in is open from 15:00 and check out time is 10:30 for all guests.<br /><br />
 
-            Please refer to the wedding invite for the unique code.
+            Please refer to the wedding invite for the booking password.
           </p>
         </div>
       </section>
